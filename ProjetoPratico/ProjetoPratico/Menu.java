@@ -13,7 +13,7 @@ public class Menu {
     public static String[][] lerCsvParaMatriz(String path) throws FileNotFoundException {
         String[][] matrizCompleta = new String[contarLinhasFicheiro(path) - 1][4];
         Scanner scFicheiro = new Scanner(new File(path));
-        String linha = scFicheiro.nextLine();
+        String linha;
 
         int contadorLinhaMatriz = 0;
 
@@ -32,17 +32,12 @@ public class Menu {
         return matrizCompleta;
     }
 
-    private static int contarLinhasFicheiro(String path) {
-       //scanner.hasNextLine
+    public static int contarLinhasFicheiro(String path) {
+        //linha = scannerFicheiro.nextLine();
+        // }while (scannerFicheiro.hasNextLine;)
         return 0;
     }
 
-
-    public static void imprimirAdmin(String admin, String[][] matrizCompleta) throws FileNotFoundException {
-    }
-
-    public static void imprimirPassword(String password, String[][] matrizCompleta) throws FileNotFoundException {
-    }
     public static int lerPositivoInteiro() {
 
         Scanner input = new Scanner(System.in);
@@ -58,6 +53,7 @@ public class Menu {
 
         return numeroLido;
     }
+
     public static void menu() throws FileNotFoundException {
 
         Scanner input = new Scanner(System.in);
@@ -123,90 +119,129 @@ public class Menu {
         } while (opcao != 6);
     }
 
-    public static void menuClientes() throws FileNotFoundException {
-    Scanner input = new Scanner(System.in);
-    int opcao = 0;
 
-    String[][] matrizCliente = lerCsvParaMatriz("ProjetoPratico/GameStart/GameStart_Clientes.csv");
-    String[][] matrizCategoria = lerCsvParaMatriz("ProjetoPratico/GameStart/GameStart_Categorias.csv");
+    /*   public static void menuClientes() throws FileNotFoundException {
+     *  Scanner input = new Scanner(System.in);
+     *  int opcao = 0;
+     *  <p>
+     *  String[][] matrizCliente = lerCsvParaMatriz("ProjetoPratico/GameStart/GameStart_Clientes.csv");
+     *  String[][] matrizCategoria = lerCsvParaMatriz("ProjetoPratico/GameStart/GameStart_Categorias.csv");
+     *  <p>
+     *  <p>
+     *  do {
+     *  System.out.println("\n***** Menu Cliente *****");
+     *  System.out.println("1. Novo Registo.");
+     *  System.out.println("2. Procurar estacionamento.");
+     *  System.out.println("3. Imprimir Catálogo.");
+     *  System.out.println("4. Imprimir Catálogos Gráficos.");
+     *  System.out.println("5. Imprimir Catálogo Editora.");
+     *  System.out.println("6. Imprimir Catálogo Categoria.");
+     *  System.out.println("7. Imprimir jogo mais recente.");
+     *  System.out.println("\nSelecione a sua opção: ");
+     * opcao = input.nextInt();
+     * <p>
+     * switch (opcao) {
+     * case 1: // Novo Registo
+     * <p>
+     * break;
+     * <p>
+     * case 2: // Procurar estacionamento (Em conflito...)
+     * <p>
+     * public static boolean triangular(int num) {
+     * num = lerPositivoInteiro();
+     * int triangulares = 0;
+     * <p>
+     * for (int i = 1; triangulares < num; i++) {
+     * <p>
+     * triangulares = triangulares + i;
+     * <p>
+     * // System.out.println("Vou comparar o " + num + " com o " + triangulares);
+     * if (num == triangulares) {
+     * return true;
+     * }
+     * <p>
+     * }
+     * <p>
+     * <p>
+     * }
+     * int numero;
+     * System.out.print("Introduza seu numero: ");
+     * numero = input.nextInt();
+     * if(triangular(numero)){
+     * System.out.println("Triangular");
+     * }else{
+     * System.out.println("Não Triangular");
+     * }
+     * break;
+     * <p>
+     * case 3:  // Imprimir Catálogo
+     * break;
+     * <p>
+     * case 4:  // Imprimir Catálogos Gráficos
+     * break;
+     * <p>
+     * case 5:  // Imprimir Catálogo Editora
+     * break;
+     * <p>
+     * case 6:  // Imprimir Catálogo Categoria
+     * break;
+     * <p>
+     * case 7:  // Imprimir jogo mais recente
+     * break;
+     * <p>
+     * default:
+     * System.out.println("⚠\uFE0F⚠\uFE0F Opção Inválida ⚠\uFE0F⚠\uFE0F");
+     * break;
+     * <p>
+     * }
+     * <p>
+     * <p>
+     * } while (opcao != 6);
+     * }
+     * <p>
+     * public static void main(String[] args) throws FileNotFoundException {
+     * menu();
+     * }*/
+
+    /* registo do cliente funciona!
+    public static void menuPrincipal(String nomeCliente, String email, int contacto) throws FileNotFoundException {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Introduza um nome: ");
+        nomeCliente = input.next();
+        System.out.print("Introduza um numero para contacto: ");
+        contacto = input.nextInt();
+        System.out.print("Introduza um email: ");
+        email = input.next();
+
+        System.out.println();
+    }
+
+    }*/
 
 
-        do {
-        System.out.println("\n***** Menu Cliente *****");
-        System.out.println("1. Novo Registo.");
-        System.out.println("2. Procurar estacionamento.");
-        System.out.println("3. Imprimir Catálogo.");
-        System.out.println("4. Imprimir Catálogos Gráficos.");
-        System.out.println("5. Imprimir Catálogo Editora.");
-        System.out.println("6. Imprimir Catálogo Categoria.");
-        System.out.println("7. Imprimir jogo mais recente.");
-        System.out.println("\nSelecione a sua opção: ");
-        opcao = input.nextInt();
 
-        switch (opcao) {
-            case 1: // Novo Registo
-
-                break;
-
-            case 2: // Procurar estacionamento (Em conflito...)
-
-                /** public static boolean triangular(int num) {
-                    num = lerPositivoInteiro();
-                    int triangulares = 0;
-                for (int i = 1; triangulares < num; i++) {
-
-                    triangulares = triangulares + i;
-
-                    // System.out.println("Vou comparar o " + num + " com o " + triangulares);
-                    if (num == triangulares) {
-                        return true;
-                    }
-
-                }
-
-                return false;
-            }
-            int numero;
-            System.out.print("Introduza seu numero: ");
-            numero = input.nextInt();
-            if(triangular(numero)){
-                System.out.println("Triangular");
-            }else{
-                System.out.println("Não Triangular");
-            }
-            break;*/
-
-            case 3:  // Imprimir Catálogo
-                break;
-
-            case 4:  // Imprimir Catálogos Gráficos
-                break;
-
-            case 5:  // Imprimir Catálogo Editora
-                break;
-
-            case 6:  // Imprimir Catálogo Categoria
-                break;
-
-            case 7:  // Imprimir jogo mais recente
-                break;
-
-            default:
-                System.out.println("⚠\uFE0F⚠\uFE0F Opção Inválida ⚠\uFE0F⚠\uFE0F");
-                break;
+    public static void lerTxtParaCatalogo(String pathOrigem) throws FileNotFoundException {
+        Scanner scannerOrigem = new Scanner(new File(pathOrigem));
+        while(scannerOrigem.hasNextLine()) {
+            String linha = scannerOrigem.nextLine();
+            System.out.println(linha);
 
         }
 
-
-    } while (opcao != 6);
-}
-
-
+    }
+    public static void  lerCatalogoGrafico (String pathOrigem) throws FileNotFoundException {
+        Scanner scannerOrigem = new Scanner(new File(pathOrigem));
+        while (scannerOrigem.hasNextLine()) {
+            String linha = scannerOrigem.nextLine();
+            System.out.println(linha);
+        }//copiar nome de jogo para array, se o nome não existir no array (usando boolean)
+    }
 
 
 
 
     public static void main(String[] args) throws FileNotFoundException {
-        menu();
+
     }
 }
