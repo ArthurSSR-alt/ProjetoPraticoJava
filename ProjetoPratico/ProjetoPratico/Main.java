@@ -7,8 +7,9 @@ import java.util.Scanner;
 public class Main {
     //Contar linhas e colunas, dentro de uma função.
     //criar matriz com o numero de linhas e colunas contado
-    //Criar menuAdmin do ADMIN
+    //Criar menuAdmin, menuCliente e login.
 
+//cria matriz com os valores guardados
     public static String[][] lerCsvParaMatriz(String path) throws FileNotFoundException {
         Scanner scFicheiro = new Scanner(new File(path));
 
@@ -34,7 +35,7 @@ public class Main {
 
         return matrizCompleta;
     }
-
+// line counter
     public static int contarLinhasFicheiro(String path) throws FileNotFoundException {
         int quantidadeLinhas = 0;
 
@@ -50,29 +51,14 @@ public class Main {
         return quantidadeLinhas;
     }
 
-    public static int lerPositivoInteiro() {
-
-        Scanner input = new Scanner(System.in);
-
-        int numeroLido;
-
-        do {
-
-            System.out.print("Introduza um número inteiro: ");
-            numeroLido = input.nextInt();
-
-        } while (numeroLido < 0);
-
-        return numeroLido;
-    }
-
+// cria o menu do adm
     public static void menuAdmin() throws FileNotFoundException {
 
         Scanner scanner = new Scanner(System.in);
         int opcao = 0;
 
 
-        do {
+        do {// cria as opções do menu
             System.out.println("\n***** Menu Admin *****");
             System.out.println("1. Imprimir ficheiros ( Vendas, Clientes, Categorias).");
             System.out.println("2. Vendas totais.");
@@ -87,13 +73,17 @@ public class Main {
             System.out.println("\nSelecione a sua opção: ");
             opcao = scanner.nextInt();
 
-            switch (opcao) {
+            switch (opcao) {// executa as opções do menu devido a escolhe do utilizador.
+
                 case 1: // Imprimir Ficheiro de Venda, Clientes e Categorias
-                    lerCsvParaMatriz("ProjetoPratico/GameStart/GameStart_Vendas.csv");
-                    // Scanner scanner = new scanner File(path());
-                    //switch tres opcoes, se ele quiser ler vendas ele vai ler só a coluna vendas
+                    switch (opcao) {
+                        case 1:
 
+                        // Scanner scanner = new scanner File(path());
+                        //switch tres opcoes, se ele quiser ler vendas ele vai ler só a coluna vendas
+                         obterValores("ProjetoPratico/GameStart/GameStart_Vendas.csv","venda", ";");
 
+                    }
                     break;
 
                 case 2: // Pesquisar por Vendas Totais
@@ -144,6 +134,7 @@ public class Main {
 
                 case 11: // Sair
                     System.out.println("Sair");
+                    imprimirFicheiro("ProjetoPratico/ProjetoPratico/copy");
                     break;
 
                 default:
@@ -154,7 +145,7 @@ public class Main {
 
         } while (opcao != 11);
     }
-
+// mostra o total de lucro
     public static void exibirTotalDeLucro(String pathVendas, String pathCategorias) throws FileNotFoundException {
         String[] valoresNomeCategoria, valoresPercentagemCategoria, valoresCategoriaVendas, valoresValorVendas;
 
@@ -183,7 +174,7 @@ public class Main {
 
         System.out.println("Lucro total das vendas por categoria: " + lucroTotal);
     }
-
+// imprime o ficheiro definido pelo utilizador
     public static String imprimirFicheiro(String path) throws FileNotFoundException {
 
         Scanner scannerFicheiro = new Scanner(new File(path));
@@ -194,7 +185,7 @@ public class Main {
         }
         return path;
     }
-
+// motra o total de vendas
     public static void exibirTotalDeVendas(String path) throws FileNotFoundException {
         int quantidadeVendas = contarLinhasFicheiro(path);
         String[] precoVendas = obterValores(path, "valor", ";");
@@ -208,9 +199,10 @@ public class Main {
         System.out.println("Quantidade de vendas: " + quantidadeVendas + "\n Valor total: " + valorTotal);
     }
 
+// gravar valores em arrays
     public static String[] obterValores(String path, String campo, String delimitador) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(path));
-        if (!scanner.hasNextLine()) return null;
+        if (!scanner.hasNextLine()) return null;//retorna vazio
 
         String header = scanner.nextLine();
         if (header.contains(campo)) {
@@ -235,13 +227,13 @@ public class Main {
 
         return null;
     }
-
+// menu dos clientes
     public static void menuClientes() throws FileNotFoundException {
         Scanner scanner = new Scanner(System.in);
         int opcao = 0;
 
 
-        do {
+        do {//cria o menu dos clientes
             System.out.println("\n***** Menu Cliente *****");
             System.out.println("1. Novo Registo.");
             System.out.println("2. Procurar estacionamento.");
@@ -253,7 +245,7 @@ public class Main {
             System.out.println("\nSelecione a sua opção: ");
             opcao = scanner.nextInt();
 
-            switch (opcao) {
+            switch (opcao) {// executa o menu dos clientes devido a escolha do utilizador
 
                 case 1: // Novo Registo
                     //Registo de Cliente.
@@ -340,17 +332,18 @@ public class Main {
 
                 default:
                     System.out.println("⚠\uFE0F⚠\uFE0F Opção Inválida ⚠\uFE0F⚠\uFE0F");
+                    imprimirFicheiro("ProjetoPratico/ProjetoPratico/copy");
                     break;
 
             }
 
 
-        } while (opcao != 6);
+        } while (opcao < 7);
     }
 
     /*registo do
     cliente funciona!*/
-
+// menu para novo registo dos clientes
     public static void menuRegisto(String nomeCliente, String email, int contacto) throws FileNotFoundException {
         Scanner input = new Scanner(System.in);
 
@@ -363,7 +356,7 @@ public class Main {
 
         System.out.println();
     }
-
+// ler catalogo
     public static void lerTxtParaCatalogo(String pathOrigem) throws FileNotFoundException {
         Scanner scannerOrigem = new Scanner(new File(pathOrigem));
         while (scannerOrigem.hasNextLine()) {
@@ -372,6 +365,7 @@ public class Main {
 
         }
     }
+
 /**
     public static void lerCatalogoGrafico(String pathOrigem) throws FileNotFoundException {
         Scanner scannerOrigem = new Scanner(new File(pathOrigem));
@@ -429,11 +423,11 @@ public class Main {
 
                 case 3:
                     System.out.println("Saindo...");
+                    imprimirFicheiro("ProjetoPratico/ProjetoPratico/copy");
                     return;
                 default:
                     System.out.println("Opção inválida!");
             }
         }
     }
-
 }
