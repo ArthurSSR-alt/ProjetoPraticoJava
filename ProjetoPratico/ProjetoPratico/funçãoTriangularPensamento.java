@@ -1,6 +1,6 @@
 package ProjetoPratico.ProjetoPratico;
 
-public class funçãoTriangularPensamento {
+public class FunçãoTriangularPensamento {
     public static boolean isTriangularMultiploCinco(int numero) {
     if (numero < 0 || numero % 5 != 0) return false;
     int triangulares = 0;
