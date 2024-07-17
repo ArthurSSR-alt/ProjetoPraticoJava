@@ -9,13 +9,14 @@ public class Main {
     //criar matriz com o numero de linhas e colunas contado
     //Criar menuAdmin, menuCliente e login.
 
-//cria matriz com os valores guardados
+    //cria matriz com os valores guardados
     public static String[][] lerCsvParaMatriz(String path) throws FileNotFoundException {//Criando função string caminho para armazenar dados de um csv como matriz de strings ☺
         Scanner scFicheiro = new Scanner(new File(path)); // Criando Scanner pro ficheiro que vai abrir o ficheiro pelo caminho definido anteriormente 😮
 
         int quantidadeParametros = 0; // contar cada parametro lido pelo scanner 😎
 
-        if (scFicheiro.hasNextLine()) quantidadeParametros = scFicheiro.nextLine().split(";").length; //condição para o scanner ler linha (caso tenha) já fazendo split do delimitador ";" no limite da matriz 😉
+        if (scFicheiro.hasNextLine())
+            quantidadeParametros = scFicheiro.nextLine().split(";").length; //condição para o scanner ler linha (caso tenha) já fazendo split do delimitador ";" no limite da matriz 😉
 
         String[][] matrizCompleta = new String[contarLinhasFicheiro(path)][quantidadeParametros]; // criando uma matriz de strings e definindo a linha e a coluna dentro dos [][] 😣
 
@@ -40,13 +41,15 @@ public class Main {
 
         return matrizCompleta; // retorno o valor da minha matrizCOmpleta que é minha matriz de strings😁
     }
-// line counter
+
+    // line counter
     public static int contarLinhasFicheiro(String path) throws FileNotFoundException { // criei essa função para contar as linhas do ficheiro, defini o caminho como string para sempre que invocar a função apenas mostrar o root. lógico que eu botei a exceção depois 🙄
         int quantidadeLinhas = 0; // Preciso dizer? okayyy, vou dizer só desta vez. Minha variável que le inteiros é o "quantidadeLinhas" e ele é inicializado a zero 😴 (são 18:48)
 
         Scanner scanner = new Scanner(new File(path)); // criei um scanner bem básico para abrir meu ficheiro definido pelo caminho que for dito pelo utilizador 😶
 
-        if (scanner.hasNextLine()) scanner.nextLine(); // implementei uma condição para meu scanner ler linhas e fui direto ao ponto para não gastar duas linhas de código. 🥱
+        if (scanner.hasNextLine())
+            scanner.nextLine(); // implementei uma condição para meu scanner ler linhas e fui direto ao ponto para não gastar duas linhas de código. 🥱
 
         else return 0; // MEU RETORNOOOOOOOOOOOOOOOOOOOOO CASO A CONDIÇÃO NÃO SEJA IDENTIFICADA "retornar o valor 0" 😲
 
@@ -60,7 +63,7 @@ public class Main {
         return quantidadeLinhas; // retornando o valor que ficará gravado na variável inteira depois da operação 😧
     }
 
-// cria o menu do adm
+    // cria o menu do adm
     public static void menuAdmin() throws FileNotFoundException { // função que eu criei para iniciar o menu do ADM. Será que você sabe a senha?? 🤔
 
         Scanner scanner = new Scanner(System.in); // outro scanner sendo criado 😝
@@ -88,9 +91,9 @@ public class Main {
                     switch (opcao) { // vamos lá switch, faça meu utilizador escolher uma destas opções... 😠
                         case 1:
 
-                        //switch tres opcoes, se ele quiser ler vendas ele vai ler ficheiro vendas e assim por diante
-                        imprimirFicheiro("ProjetoPratico/GameStart/GameStart_Vendas.csv");
-                        break;
+                            //switch tres opcoes, se ele quiser ler vendas ele vai ler ficheiro vendas e assim por diante
+                            imprimirFicheiro("ProjetoPratico/GameStart/GameStart_Vendas.csv");
+                            break;
 
                         case 2:
                             imprimirFicheiro("ProjetoPratico/GameStart/GameStart_Clientes.csv");
@@ -102,7 +105,6 @@ public class Main {
 
                     }
                     break;
-
 
 
                 case 2: // Pesquisar por Vendas Totais 🧐
@@ -117,7 +119,6 @@ public class Main {
 
                 case 4:  // Pesquisar melhor cliente
                     // não teve melhor cliente.. 😪
-
 
 
                     break;
@@ -172,7 +173,8 @@ public class Main {
 
         } while (opcao != 11); // fecha o ciclo do menu com um while
     }
-// mostra o total de lucro 💨
+
+    // mostra o total de lucro 💨
     public static void exibirTotalDeLucro(String pathVendas, String pathCategorias) throws FileNotFoundException { // criei a função exibirTotalDeLucro sem retorno de valores com uma string para o caminho vendas e outra string para o caminho das categorias. ♾
 
         String[] valoresNomeCategoria, valoresPercentagemCategoria, valoresCategoriaVendas, valoresValorVendas; // criei quatro arrays de strings com os respectivos nomes escritos. 👻
@@ -193,7 +195,8 @@ public class Main {
 
             for (int j = 0; j < valoresNomeCategoria.length; j++) { // ciclo for onde eu determino j minha coluna e faço ela ser lida totalmente 🤠
 
-                if (valoresNomeCategoria[j].equals(categoria)) indexNomeCategoria = j; // determino com uma condição que minha coluna valoresNomeCategoria tem o valor da categoria no indexNomeCategoria que é minha nova coluna 🥶
+                if (valoresNomeCategoria[j].equals(categoria))
+                    indexNomeCategoria = j; // determino com uma condição que minha coluna valoresNomeCategoria tem o valor da categoria no indexNomeCategoria que é minha nova coluna 🥶
             }
 
             if (indexNomeCategoria > -1) { // condição para determinar meu indiceNomeCategoria maior que -1 para executar as informações a seguir 🤫
@@ -208,7 +211,8 @@ public class Main {
 
         System.out.println("Lucro total das vendas por categoria: " + lucroTotal); // faz o print na consola do lucro total
     }
-// imprime o ficheiro definido pelo utilizador
+
+    // imprime o ficheiro definido pelo utilizador
     public static String imprimirFicheiro(String path) throws FileNotFoundException { // crio uma função declarando uma string para imprimir ficheiro com uma string para o path 🐷
 
         Scanner scannerFicheiro = new Scanner(new File(path)); // um scanner para abrir o ficheiro 🐯
@@ -219,7 +223,8 @@ public class Main {
         }
         return path; //retorna o caminho
     }
-// motra o total de vendas
+
+    // motra o total de vendas
     public static void exibirTotalDeVendas(String path) throws FileNotFoundException {
         int quantidadeVendas = contarLinhasFicheiro(path);
         String[] precoVendas = obterValores(path, "valor", ";");
@@ -233,7 +238,56 @@ public class Main {
         System.out.println("Quantidade de vendas: " + quantidadeVendas + "\n Valor total: " + valorTotal);
     }
 
-// gravar valores em arrays
+    //aqui eu crio uma matriz sem cópia
+    public static String[][] matrizQueTiraCopias(String[][] matrizVendas) {
+        String[][] matrizQueTiraCopias = new String[matrizVendas.length][matrizVendas[0].length];
+
+        int count = 0;
+
+
+        for (int i = 0; i < matrizQueTiraCopias[0].length; i++) { //grava na primeira linha os valores da matriz anterior na nova
+            matrizQueTiraCopias[0][i] = matrizVendas[0][i];
+        }
+        count++;
+
+        // aqui eu leio linha por linha e faço uma análise...
+        for (int t = 1; t < matrizVendas.length; t++) { // próxima linha!!
+            boolean copia = false; // condição T ou F para definir se há ou não cópias
+            for (int i = 0; i < count; i++) {
+                if (matrizVendas[1][4].equals(matrizQueTiraCopias[i][4])) { //analiso se meu jogo tem cópias na matriz
+                    copia = true;
+                    break;
+                }
+            }
+            if (!copia){ //não há copias? então leia toda a linha!
+
+                for (int i=0; i<matrizVendas[0].length;i++){
+                    matrizQueTiraCopias[count][i]=matrizVendas[t][i];
+
+                }count++;
+            }
+        }
+
+        // aqui eu crio uma nova e última matriz ajeitando o tamanho da mesma com os valores devidamente gravados
+        String[][] matrizCompleta = new String[count][matrizVendas[0].length];
+        for (int t=0; t<matrizVendas[0].length; t++){
+            for (int i=0; i< matrizVendas[0].length;i++){
+                matrizCompleta[t][i]= matrizQueTiraCopias[t][i];
+
+            }
+        }
+        return matrizCompleta;
+    }
+
+    //
+    public static void imprimirJogoRecente(String[][]jogos){
+        String linhaFinal=jogos[jogos.length-1][4];
+
+        System.out.println("Jogo mais recente: "+ linhaFinal);
+
+    }
+
+    // gravar valores em arrays
     public static String[] obterValores(String path, String campo, String delimitador) throws FileNotFoundException {// funcão obter valores que recebe um array de strings com uma string campo(local), uma string path(file), e uma string para o delimitador😩
         Scanner scanner = new Scanner(new File(path)); // mais um scanner, que vai abrir o ficheiro 🦴
         if (!scanner.hasNextLine()) return null;// crio um ciclo if para retorna um valor vazio caso o scanner não ache uma linha para ler 🍕
@@ -264,7 +318,8 @@ public class Main {
 
         return null; //retorna um valor vazio caso não se encaixe o primeiro tópico 🕶
     }
-// menu dos clientes
+
+    // menu dos clientes
     public static void menuClientes() throws FileNotFoundException { // crio a função que não me retorna valor nomeada menuClientes para fazer meu switch do cliente com a exceção do file not found para printar erro caso não ache um file 🎆
         Scanner scanner = new Scanner(System.in); // crio scanner 🎄
         int opcao = 0; //declaro inteiro minha opcao e inicializo ela a zero 🧶
@@ -365,6 +420,8 @@ public class Main {
                     break;
 
                 case 7:  // Imprimir jogo mais recente
+                  //  imprimirJogoRecente(matrizQueTiraCopias());
+
                     break;
 
                 default: // fecha o switch
@@ -380,7 +437,8 @@ public class Main {
 
     /*registo do
     cliente funciona!*/
-// menu para novo registo dos clientes🧨
+
+    // menu para novo registo dos clientes🧨
     public static void menuRegisto(String nomeCliente, String email, int contacto) throws FileNotFoundException {
         Scanner input = new Scanner(System.in);
 
@@ -393,7 +451,8 @@ public class Main {
 
         System.out.println();
     }
-// ler catalogo
+
+    // ler catalogo
     public static void lerTxtParaCatalogo(String pathOrigem) throws FileNotFoundException { // função de leitura com uma string nomeada pathOrigem 🎎
         Scanner scannerOrigem = new Scanner(new File(pathOrigem)); // scanner novamente 🎏
         while (scannerOrigem.hasNextLine()) { // enquanto meu scanner encontrar uma linha ele a le e grava tudo em uma string nomeada linha depois printa a linha 🎊
